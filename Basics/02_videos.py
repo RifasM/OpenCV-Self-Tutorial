@@ -5,6 +5,8 @@ cap = cv2.VideoCapture('input_videos/vid_1.mp4')            # Open a video file,
 while cap.isOpened():                                       # Check if cap is initialized and then proceed looping
     ret, frame = cap.read()                                 # returns True, frame if frame is available, else False
 
+    if not ret:                                             # If ret is false, break out of loop
+        break
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)          # Convert to greyscale image
 
     cv2.imshow('Grey-scaled', gray)                         # Show the GreyScale Image
