@@ -1,4 +1,3 @@
-import numpy as np
 import cv2
 
 img = cv2.imread("input_images/img_1.jpg", 0)       # Load a color image in greyscale
