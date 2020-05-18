@@ -8,6 +8,8 @@ print(events)
 
 # mouse callback function
 def draw_circle(event, x, y, flags, param):
+    if flags:
+        print("Mouse Clicked\nParameters: ", param)
     if event == cv2.EVENT_LBUTTONDBLCLK:
         cv2.circle(img, (x, y), 100, (255, 0, 0), -1)
 
@@ -15,7 +17,7 @@ def draw_circle(event, x, y, flags, param):
 # Create a black image, a window and bind the function to window
 img = np.zeros((512, 512, 3), np.uint8)
 cv2.namedWindow('Mouse Double Click')
-cv2.setMouseCallback('Mouse Double Click', draw_circle)
+cv2.setMouseCallback(window_name='Mouse Double Click', on_mouse=draw_circle, param=None)
 
 while True:
     cv2.imshow('Mouse Double Click', img)
