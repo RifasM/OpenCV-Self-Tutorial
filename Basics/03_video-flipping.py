@@ -1,6 +1,6 @@
 import cv2
 
-cap = cv2.VideoCapture('input_videos/vid_1.mp4')  # Open a video file
+cap = cv2.VideoCapture('../Media Files/input_videos/vid_1.mp4')  # Open a video file
 
 # Changing the video properties (0 to 18), given in:
 # http://docs.opencv.org/modules/highgui/doc/reading_and_writing_images_and_video.html#videocapture-get
@@ -10,7 +10,7 @@ cap = cv2.VideoCapture('input_videos/vid_1.mp4')  # Open a video file
 # More about Fourcc https://en.wikipedia.org/wiki/FourCC
 fourcc = cv2.VideoWriter_fourcc(*'XVID')                    # Set Video format to XVID
 frame_size = (1280, 720)                                     # Set Output video frame size to 640 x 480
-file_name = "output_videos/vid_1.avi"                       # Output file name
+file_name = "../Media Files/output_videos/vid_1.avi"                       # Output file name
 frames_per_second = 20                                      # Number of frames to save per second
 
 out = cv2.VideoWriter(file_name, fourcc, frames_per_second, frame_size)         # Video Writer Object

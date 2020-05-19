@@ -1,6 +1,6 @@
 import cv2
 
-cap = cv2.VideoCapture('input_videos/vid_1.mp4')            # Open a video file, 0 to open Web-Cam
+cap = cv2.VideoCapture('../Media Files/input_videos/vid_1.mp4')            # Open a video file, 0 to open Web-Cam
 
 while cap.isOpened():                                       # Check if cap is initialized and then proceed looping
     ret, frame = cap.read()                                 # returns True, frame if frame is available, else False

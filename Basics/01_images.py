@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread("input_images/img_1.jpg", 0)       # Load a color image in greyscale
+img = cv2.imread("../Media Files/input_images/img_1.jpg", 0)       # Load a color image in greyscale
 
 cv2.imshow("Image", img)                            # Show the image on a frame
 k = cv2.waitKey(0) & 0xFF                           # Wait for key press, since 64-bit machine, we AND the key with 0xFF
