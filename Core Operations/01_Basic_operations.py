@@ -18,4 +18,6 @@ img[100, 100] = [255, 255, 255]                                  # Changing pixe
 print("Changed: ", img[100, 100])
 
 # Better pixel accessing and editing method
-
+print("Initial red Value: ", img.item(10, 10, 2))                # accessing RED value at (10, 10)
+img.itemset((10, 10, 2), 100)                                    # modifying RED value at (10, 10)
+print("Modified red Value: ", img.item(10, 10, 2))
