@@ -19,7 +19,7 @@ img1 = cv2.resize(img1, dsize=(174, 179), interpolation=cv2.INTER_CUBIC)
 img2 = cv2.resize(img2, dsize=(174, 179), interpolation=cv2.INTER_CUBIC)
 
 # First image is given a weight of 0.7 and second image is given 0.3, gamma is taken as 0
-dst = cv2.addWeighted(src1=img1, alpha=0.7, src2=img2, beta=0.3, gamma=2)
+dst = cv2.addWeighted(src1=img1, alpha=0.7, src2=img2, beta=0.3, gamma=0)
 
 cv2.imshow('Added', dst)
 cv2.waitKey(0)
