@@ -17,6 +17,7 @@ while True:
     # Convert BGR to HSV
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
+    # For HSV, Hue range is [0,179], Saturation range is [0,255] and Value range is [0,255].
     # define range of blue color in HSV
     lower_blue = np.array([110, 50, 50])
     upper_blue = np.array([130, 255, 255])
@@ -37,3 +38,8 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+
+# How to find HSV colors to track
+green = np.uint8([[[0, 255, 0]]])                   # Green in BGR (OpenCV Format)
+hsv_green = cv2.cvtColor(green, cv2.COLOR_BGR2HSV)
+print("HSV Value of Green: ", hsv_green)
