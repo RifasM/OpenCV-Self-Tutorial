@@ -22,8 +22,8 @@ In other words, it is a weighted sum of the blockSize×blockSize neighborhood of
 """
 th2 = cv2.adaptiveThreshold(src=img, maxValue=255, adaptiveMethod=cv2.ADAPTIVE_THRESH_MEAN_C,
                             thresholdType=cv2.THRESH_BINARY, blockSize=11, C=2)
-th3 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-                            cv2.THRESH_BINARY, 11, 2)
+th3 = cv2.adaptiveThreshold(src=img, maxValue=255, adaptiveMethod=cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+                            thresholdType=cv2.THRESH_BINARY, blockSize=11, C=2)
 
 titles = ['Original Image', 'Global Thresholding (v = 127)',
           'Adaptive Mean Thresholding', 'Adaptive Gaussian Thresholding']
