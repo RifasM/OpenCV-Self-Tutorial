@@ -74,7 +74,13 @@ plt.show()
 
 # PERSPECTIVE TRANSFORMATIONS
 """
-
+For perspective transformation, you need a 3x3 transformation matrix.
+Straight lines will remain straight even after the transformation.
+To find this transformation matrix, you need 4 points on the input 
+mage and corresponding points on the output image. Among these 4 points,
+3 of them should not be collinear. Then transformation matrix can 
+be found by the function cv2.getPerspectiveTransform. 
+Then apply cv2.warpPerspective with this 3x3 transformation matrix.
 """
 img = cv2.imread('../Media Files/input_images/img_9.jpg')
 rows, cols, ch = img.shape
