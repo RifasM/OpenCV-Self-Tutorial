@@ -19,6 +19,7 @@ res = cv2.resize(src=img, dsize=(2 * width, 2 * height), interpolation=cv2.INTER
 cv2.imshow("Scaling Result 2", res)
 
 cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 # TRANSLATION
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -32,3 +33,15 @@ cv2.imshow('Translation Result', dst)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# ROTATION
+
+# rotates the image by 90 degree with respect to center without any scaling
+M = cv2.getRotationMatrix2D(center=(cols / 2, rows / 2), angle=90, scale=1)
+dst = cv2.warpAffine(src=img, M=M, dsize=(cols, rows))
+
+cv2.imshow('Rotation Result', dst)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
