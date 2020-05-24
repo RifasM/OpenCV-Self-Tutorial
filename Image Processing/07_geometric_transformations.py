@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 
 # cv2.warpAffine takes a 2x3 transformation matrix while
 # cv2.warpPerspective takes a 3x3 transformation matrix as input.
@@ -45,3 +46,28 @@ cv2.imshow('Rotation Result', dst)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
+# AFFINE TRANSFORMATION
+"""
+In affine transformation, all parallel lines in the original image will still
+be parallel in the output image. 
+To find the transformation matrix, we need three points from input image and 
+their corresponding locations in output image. 
+Then cv2.getAffineTransform will create a 2x3 matrix which is to be passed to
+cv2.warpAffine.
+"""
+img = cv2.imread('../Media Files/input_images/img_8.jpg')
+rows, cols, ch = img.shape
+
+pts1 = np.float32([[50, 50], [200, 50], [50, 200]])         # Source Pixel Points
+pts2 = np.float32([[10, 100], [200, 50], [100, 250]])       # Destination Pixel Points
+
+M = cv2.getAffineTransform(src=pts1, dst=pts2)
+
+dst = cv2.warpAffine(src=img, M=M, dsize=(cols, rows))
+
+# plt.subplot(Row|Col|plot_num)
+# -> 1 row, 2 cols, plot_num 1 -> 121
+# -> 1 row, 2 cols, plot_num 2 -> 122
+plt.subplot(121), plt.imshow(img), plt.title('Input')
+plt.subplot(122), plt.imshow(dst), plt.title('Output')
+plt.show()
