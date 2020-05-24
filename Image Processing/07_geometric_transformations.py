@@ -58,8 +58,8 @@ cv2.warpAffine.
 img = cv2.imread('../Media Files/input_images/img_8.jpg')
 rows, cols, ch = img.shape
 
-pts1 = np.float32([[50, 50], [200, 50], [50, 200]])         # Source Pixel Points
-pts2 = np.float32([[10, 100], [200, 50], [100, 250]])       # Destination Pixel Points
+pts1 = np.float32([[50, 50], [200, 50], [50, 200]])  # Source Pixel Points
+pts2 = np.float32([[10, 100], [200, 50], [100, 250]])  # Destination Pixel Points
 
 M = cv2.getAffineTransform(src=pts1, dst=pts2)
 
@@ -68,6 +68,24 @@ dst = cv2.warpAffine(src=img, M=M, dsize=(cols, rows))
 # plt.subplot(Row|Col|plot_num)
 # -> 1 row, 2 cols, plot_num 1 -> 121
 # -> 1 row, 2 cols, plot_num 2 -> 122
+plt.subplot(121), plt.imshow(img), plt.title('Input')
+plt.subplot(122), plt.imshow(dst), plt.title('Output')
+plt.show()
+
+# PERSPECTIVE TRANSFORMATIONS
+"""
+
+"""
+img = cv2.imread('../Media Files/input_images/img_9.jpg')
+rows, cols, ch = img.shape
+
+pts1 = np.float32([[77, 252], [378, 119], [198, 469], [500, 274]])
+pts2 = np.float32([[0, 0], [300, 0], [0, 300], [300, 300]])
+
+M = cv2.getPerspectiveTransform(pts1, pts2)
+
+dst = cv2.warpPerspective(img, M, (300, 300))
+
 plt.subplot(121), plt.imshow(img), plt.title('Input')
 plt.subplot(122), plt.imshow(dst), plt.title('Output')
 plt.show()
