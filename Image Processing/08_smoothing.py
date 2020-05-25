@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread('../Media Files/input_images/img_3.jpg')
+img = cv2.imread('../Media Files/input_images/img_10.jpg')
 
 # 2D Convolution ( Image Filtering )
 kernel = np.ones((5, 5), np.float32) / 25
@@ -61,4 +61,17 @@ kernel = cv2.getGaussianKernel(ksize=5, sigma=0)
 print(kernel)
 dst = cv2.filter2D(src=img, ddepth=-1, kernel=kernel)
 plt.imshow(dst), plt.title("kernel")
+plt.show()
+
+# 3. Median Filtering
+"""
+the function cv2.medianBlur() computes the median of all the pixels 
+under the kernel window and the central pixel is replaced with this median value. 
+"""
+median = cv2.medianBlur(src=img, ksize=5)
+
+plt.subplot(121), plt.imshow(img), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(122), plt.imshow(median), plt.title('Median Blurred')
+plt.xticks([]), plt.yticks([])
 plt.show()
