@@ -38,3 +38,20 @@ plt.xticks([]), plt.yticks([])
 plt.subplot(224), plt.imshow(boxFilterTrue), plt.title('Box Filter True')
 plt.xticks([]), plt.yticks([])
 plt.show()
+
+# 2. Gaussian Filtering
+"""
+We should specify the width and height of the kernel which should be positive and odd.
+We also should specify the standard deviation in the X and Y directions, sigmaX and 
+sigmaY respectively. If only sigmaX is specified, sigmaY is taken as equal to sigmaX. 
+
+If both are given as zeros, they are calculated from the kernel size. 
+Gaussian filtering is highly effective in removing Gaussian noise from the image.
+"""
+blur = cv2.GaussianBlur(src=img, ksize=(5, 5), sigmaX=2)
+
+plt.subplot(121), plt.imshow(img), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(122), plt.imshow(blur), plt.title('Gaussian Blurred')
+plt.xticks([]), plt.yticks([])
+plt.show()
