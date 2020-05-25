@@ -75,3 +75,20 @@ plt.xticks([]), plt.yticks([])
 plt.subplot(122), plt.imshow(median), plt.title('Median Blurred')
 plt.xticks([]), plt.yticks([])
 plt.show()
+
+# 4. Bilateral Filtering
+"""
+cv2.bilateralFilter(), which was defined for, and is highly effective at noise removal 
+while preserving edges. But the operation is slower compared to other filters.
+This Gaussian filter is a function of space alone, that is, nearby pixels are considered 
+while filtering. It does not consider whether pixels have almost the same intensity 
+value and does not consider whether the pixel lies on an edge or not. 
+The resulting effect is that Gaussian filters tend to blur edges, which is undesirable.
+"""
+blur = cv2.bilateralFilter(img, 9, 75, 75)
+
+plt.subplot(121), plt.imshow(img), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(122), plt.imshow(blur), plt.title('Bilateral Blurred')
+plt.xticks([]), plt.yticks([])
+plt.show()
