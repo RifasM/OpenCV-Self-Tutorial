@@ -48,10 +48,17 @@ sigmaY respectively. If only sigmaX is specified, sigmaY is taken as equal to si
 If both are given as zeros, they are calculated from the kernel size. 
 Gaussian filtering is highly effective in removing Gaussian noise from the image.
 """
-blur = cv2.GaussianBlur(src=img, ksize=(5, 5), sigmaX=2)
+blur = cv2.GaussianBlur(src=img, ksize=(5, 5), sigmaX=0)
 
 plt.subplot(121), plt.imshow(img), plt.title('Original')
 plt.xticks([]), plt.yticks([])
 plt.subplot(122), plt.imshow(blur), plt.title('Gaussian Blurred')
 plt.xticks([]), plt.yticks([])
+plt.show()
+
+# Using Gaussian Kernel
+kernel = cv2.getGaussianKernel(ksize=5, sigma=0)
+print(kernel)
+dst = cv2.filter2D(src=img, ddepth=-1, kernel=kernel)
+plt.imshow(dst), plt.title("kernel")
 plt.show()
