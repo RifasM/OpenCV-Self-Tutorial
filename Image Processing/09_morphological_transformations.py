@@ -53,3 +53,13 @@ opening = cv2.morphologyEx(src=img, op=cv2.MORPH_OPEN, kernel=kernel)
 cv2.imshow("Opening", opening)
 
 cv2.waitKey(0)
+
+# CLOSING
+"""
+Closing is reverse of Opening, Dilation followed by Erosion. 
+It is useful in closing small holes inside the foreground objects, or small black points on the object.
+"""
+closing = cv2.morphologyEx(src=img, op=cv2.MORPH_CLOSE, kernel=kernel)
+cv2.imshow("Closing", closing)
+
+cv2.waitKey(0)
