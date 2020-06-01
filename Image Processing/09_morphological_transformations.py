@@ -65,13 +65,22 @@ cv2.imshow("Closing", closing)
 cv2.waitKey(0)
 
 # MORPHOLOGICAL GRADIENT
+# It is the difference between dilation and erosion of an image.
 gradient = cv2.morphologyEx(src=img, op=cv2.MORPH_GRADIENT, kernel=kernel)
 cv2.imshow("Gradient", gradient)
 
 cv2.waitKey(0)
 
 # TOP HAT
+# It is the difference between input image and Opening of the image.
 top_hat = cv2.morphologyEx(src=img, op=cv2.MORPH_TOPHAT, kernel=kernel)
 cv2.imshow("Top Hat", top_hat)
+
+cv2.waitKey(0)
+
+# BLACK HAT
+# It is the difference between the closing of the input image and input image.
+black_hat = cv2.morphologyEx(src=img, op=cv2.MORPH_BLACKHAT, kernel=kernel)
+cv2.imshow("Black Hat", black_hat)
 
 cv2.waitKey(0)
