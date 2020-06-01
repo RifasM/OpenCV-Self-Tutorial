@@ -69,3 +69,9 @@ gradient = cv2.morphologyEx(src=img, op=cv2.MORPH_GRADIENT, kernel=kernel)
 cv2.imshow("Gradient", gradient)
 
 cv2.waitKey(0)
+
+# TOP HAT
+top_hat = cv2.morphologyEx(src=img, op=cv2.MORPH_TOPHAT, kernel=kernel)
+cv2.imshow("Top Hat", top_hat)
+
+cv2.waitKey(0)
