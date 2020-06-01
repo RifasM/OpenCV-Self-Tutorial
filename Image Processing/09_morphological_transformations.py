@@ -84,3 +84,18 @@ black_hat = cv2.morphologyEx(src=img, op=cv2.MORPH_BLACKHAT, kernel=kernel)
 cv2.imshow("Black Hat", black_hat)
 
 cv2.waitKey(0)
+
+# Built In Kernels
+"""
+ In some cases, we may need elliptical/circular shaped kernels. 
+ So for this purpose, OpenCV has a function, cv2.getStructuringElement(). 
+ We just pass the shape and size of the kernel, we'll get the desired kernel.
+"""
+# Rectangular Kernel
+print("Rectangular Kernel\n", cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5)))
+
+# Elliptical Kernel
+print("Elliptical Kernel\n", cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))
+
+# Cross-shaped Kernel
+print("Cross-Shaped Kernel\n", cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5)))
