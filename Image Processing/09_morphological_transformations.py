@@ -24,7 +24,23 @@ So the thickness or size of the foreground object decreases or simply white regi
 decreases in the image. 
 """
 kernel = np.ones((5, 5), np.uint8)
-erosion = cv2.erode(img, kernel, iterations=1)
+erosion = cv2.erode(src=img, kernel=kernel, iterations=1)
 cv2.imshow("Erosion", erosion)
+
+cv2.waitKey(0)
+
+# Dilation
+"""
+Here, a pixel element is ‘1’ if at least one pixel under the kernel is ‘1’. 
+So it increases the white region in the image or size of foreground object increases. 
+Normally, in cases like noise removal, erosion is followed by dilation. 
+Because, erosion removes white noises, but it also shrinks our object. 
+So we dilate it. Since noise is gone, they won’t come back, but our object area increases. 
+It is also useful in joining broken parts of an object.
+"""
+dilation = cv2.dilate(src=img, kernel=kernel, iterations=1)
+erosion_dilation = cv2.dilate(src=img, kernel=kernel, iterations=1)
+cv2.imshow("Dilation", dilation)
+cv2.imshow("Erosion followed by Dilation", erosion_dilation)
 
 cv2.waitKey(0)
