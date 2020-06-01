@@ -63,3 +63,9 @@ closing = cv2.morphologyEx(src=img, op=cv2.MORPH_CLOSE, kernel=kernel)
 cv2.imshow("Closing", closing)
 
 cv2.waitKey(0)
+
+# MORPHOLOGICAL GRADIENT
+gradient = cv2.morphologyEx(src=img, op=cv2.MORPH_GRADIENT, kernel=kernel)
+cv2.imshow("Gradient", gradient)
+
+cv2.waitKey(0)
