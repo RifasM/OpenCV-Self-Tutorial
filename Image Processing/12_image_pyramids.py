@@ -66,7 +66,6 @@ for i in range(1, 6):
     ls_ = cv2.add(ls_, LS[i])
 
 # image with direct connecting each half
-print(A.shape)
 real = np.hstack((A[:, :A.shape[0]//2], B[:, B.shape[0]//2:]))
 
 cv2.imshow("Pyramid Blend", ls_)
