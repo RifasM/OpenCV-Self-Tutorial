@@ -11,7 +11,7 @@ STEPS
 """
 
 img = cv2.imread('../Media Files/input_images/img_2.jpg', 0)
-edges = cv2.Canny(img, 100, 200)
+edges = cv2.Canny(image=img, threshold1=100, threshold2=200)
 
 plt.subplot(121), plt.imshow(img, cmap='gray')
 plt.title('Original Image'), plt.xticks([]), plt.yticks([])
