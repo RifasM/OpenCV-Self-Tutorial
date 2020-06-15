@@ -1,8 +1,10 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('../../Media Files/input_images/img_17.jpg', 0)
+img = cv2.imread('../../Media Files/input_images/img_17.jpg')
+col_img = img.copy()
 img_copy = img.copy()
+img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imshow("Original Image", img)
 ret, thresh = cv2.threshold(img, 127, 255, 0)
 contours, hierarchy = cv2.findContours(thresh, 1, 2)
@@ -11,8 +13,8 @@ cv2.imshow("All Contours", img_copy)
 del img_copy
 
 cnt = contours[0]
-img_copy = img.copy()
-img_copy = cv2.drawContours(img_copy, [cnt], 0, (255, 0, 0), 5)
+img_copy = col_img.copy()
+img_copy = cv2.drawContours(img_copy, [cnt], 0, (255, 0, 0), 2)
 cv2.imshow("1st Contour", img_copy)
 M = cv2.moments(array=cnt)
 print("Moments of 1st Contour:\n", M)
