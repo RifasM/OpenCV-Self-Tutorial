@@ -19,3 +19,11 @@ C_y = frac{M_{01}}{M_{00}}
 cx = int(M['m10'] / M['m00'])
 cy = int(M['m01'] / M['m00'])
 print("Centroid: (", cx, ", ", cy, ")")
+
+# Contour Area is given by M00
+area = cv2.contourArea(cnt)
+print(area)
+
+# Perimeter
+perimeter = cv2.arcLength(cnt, True)
+print(perimeter)
