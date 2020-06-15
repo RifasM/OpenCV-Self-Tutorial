@@ -54,3 +54,48 @@ approx_10 = cv2.drawContours(col_img.copy(), [approx_10], -1, (0, 0, 255), 2)
 cv2.imshow("Approximation 10%", approx_10)
 
 cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# Convex Hull
+"""
+SYNTAX: 
+ hull = cv2.convexHull(points[, hull[, clockwise[, returnPoints]]
+     - points are the contours we pass into.
+     - hull is the output, normally we avoid it.
+     - clockwise : Orientation flag. 
+                   If it is True, the output convex hull is oriented clockwise. 
+                   Otherwise, it is oriented counter-clockwise.
+     - returnPoints : By default, True. 
+                      Then it returns the coordinates of the hull points. 
+                      If False, it returns the indices of contour points corresponding to the hull points.
+"""
+img = cv2.imread('../../Media Files/input_images/img_16.jpg')
+col_img = img.copy()
+
+img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+cv2.imshow("Original Image", col_img)
+_, thresh = cv2.threshold(img, 127, 255, 0)
+contours, _ = cv2.findContours(thresh, 1, 2)
+
+cnt = contours[0]
+
+hull = cv2.convexHull(points=cnt)          # returnPoints = True (default)
+print("Default Hull:\n", hull)
+hull = cv2.drawContours(col_img.copy(), hull, -1, (0, 127, 127), 5)
+cv2.imshow("Default Hull (Return Points True)", hull)
+
+hull = cv2.convexHull(points=cnt, returnPoints=False)
+print("Return Points False Hull:\n", hull)
+# These are the indices of corresponding points in contours
+
+print(len(contours[0]), len(contours[1]))
+imcopy = col_img.copy()
+hull_img = np.ones_like(img)
+for i in hull:
+    hull_img = cv2.drawContours(imcopy, contours[0], i, (0, 127, 127), 5)
+cv2.imshow("Return Points False Hull", hull_img)
+
+k = cv2.isContourConvex(cnt)
+print("Is Contour Convex?", k)
+
+cv2.waitKey(0)
