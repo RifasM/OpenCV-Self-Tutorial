@@ -25,3 +25,5 @@ img_copy2 = img_copy1.copy()
 img_copy1 = cv2.drawContours(image=img_copy1, contours=[cnt], contourIdx=0, color=(0, 255, 0), thickness=3)
 cv2.imshow("Image with 2nd contour method 2", img_copy1)
 cv2.waitKey(0)
+
+cv2.destroyAllWindows()
