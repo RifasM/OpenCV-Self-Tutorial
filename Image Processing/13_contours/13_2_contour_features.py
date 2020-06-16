@@ -91,7 +91,7 @@ print("Return Points False Hull:\n", hull)
 imcopy = col_img.copy()
 hull_img = np.ones_like(img)
 for i in hull:
-    hull_img = cv2.drawContours(imcopy, contours[0], i, (0, 127, 127), 5)
+    hull_img = cv2.drawContours(imcopy, cnt, i, (0, 127, 127), 5)
 cv2.imshow("Return Points False Hull", hull_img)
 
 k = cv2.isContourConvex(cnt)

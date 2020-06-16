@@ -15,9 +15,28 @@ cnt = contours[0]
 
 # Aspect Ratio
 # It is the ratio of width to height of bounding rect of the object.
-x, y, w, h = cv2.boundingRect(cnt)
+x, y, w, h = cv2.boundingRect(array=cnt)
 aspect_ratio = float(w) / h
 print("Aspect Ratio:", aspect_ratio)
+
+# Extent
+# Extent is the ratio of contour area to bounding rectangle area.
+area = cv2.contourArea(contour=cnt)
+print("Contour Area:", area)
+rect_area = w*h
+print("Rectangle Area:", rect_area)
+extent = float(area)/rect_area
+print("Extent:", extent)
+
+# Solidity
+# Solidity is the ratio of contour area to its convex hull area.
+hull = cv2.convexHull(cnt)
+img_copy = cv2.drawContours(col_img.copy(), hull, -1, (255, 0, 0), 3)
+cv2.imshow("Convex Hull", img_copy)
+hull_area = cv2.contourArea(hull)
+print("Hull Area:", hull_area)
+solidity = float(area)/hull_area
+print("Solidity:", solidity)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
