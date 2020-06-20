@@ -7,6 +7,7 @@ ret, thresh = cv2.threshold(img_gray, 127, 255, 0)
 contours, hierarchy = cv2.findContours(thresh, 2, 1)
 cnt = contours[0]
 
+# Convexity Defects
 hull = cv2.convexHull(cnt, returnPoints=False)
 # Remember we have to pass
 # returnPoints = False
@@ -32,3 +33,22 @@ for i in range(defects.shape[0]):
 cv2.imshow('Result', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# Point Polygon Test
+"""
+This function finds the shortest distance between a point in the image and a contour. 
+It returns the distance which is negative when point is outside the contour, positive 
+when point is inside and zero if point is on the contour.
+"""
+dist = cv2.pointPolygonTest(contour=cnt, pt=(50, 50), measureDist=True)
+# If you don’t want to find the distance, make sure third argument is False,
+# because, it is a time consuming process.
+# So, making it False gives about 2-3X speedup.
+print("Distance of point (50, 50) in contour :", dist)
+if dist == 0:
+    point = "On the contour"
+elif dist == -1:
+    point = "Outside the contour"
+else:
+    point = "Inside the contour"
+print("Where is the point (50, 50)?: ", point)
