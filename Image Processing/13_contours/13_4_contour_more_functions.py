@@ -52,3 +52,26 @@ elif dist == -1:
 else:
     point = "Inside the contour"
 print("Where is the point (50, 50)?: ", point)
+
+# Match Shapes
+"""
+cv2.matchShapes() which enables us to compare two shapes, or two contours and returns a 
+metric showing the similarity. 
+The lower the result, the better match it is. 
+It is calculated based on the hu-moment values.
+
+Hu-Moments are seven moments invariant to translation, rotation and scale. 
+Seventh one is skew-invariant. Those values can be found using cv2.HuMoments() function.
+"""
+img1 = cv2.imread('../../Media Files/input_images/img_17.jpg', 0)
+img2 = cv2.imread('../../Media Files/input_images/img_13.jpg', 0)
+
+_, thresh = cv2.threshold(img1, 127, 255, 0)
+_, thresh2 = cv2.threshold(img2, 127, 255, 0)
+contours, _ = cv2.findContours(thresh, 2, 1)
+cnt1 = contours[0]
+contours, _ = cv2.findContours(thresh2, 2, 1)
+cnt2 = contours[0]
+
+ret = cv2.matchShapes(contour1=cnt1, contour2=cnt2, method=1, parameter=0.0)
+print("Shapes Matched?:", ret)
