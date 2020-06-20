@@ -1,3 +1,5 @@
+import re
+
 import cv2
 import numpy as np
 
@@ -73,5 +75,7 @@ cnt1 = contours[0]
 contours, _ = cv2.findContours(thresh2, 2, 1)
 cnt2 = contours[0]
 
-ret = cv2.matchShapes(contour1=cnt1, contour2=cnt2, method=1, parameter=0.0)
+ret = cv2.matchShapes(contour1=cnt1, contour2=cnt2, method=cv2.CONTOURS_MATCH_I1, parameter=0.0)
 print("Shapes Matched?:", ret)
+
+[print(d, ":", getattr(cv2, d)) for d in [i for i in dir(cv2) if re.match('^(CONTOURS_MATCH_).*', i)]]
