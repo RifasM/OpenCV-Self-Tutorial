@@ -9,6 +9,7 @@ print("\nAvailable methods for contour: ")
 [print("\t", d, ":", getattr(cv2, d)) for d in [i for i in dir(cv2) if re.match('^(CHAIN_).*', i)]]
 
 img = cv2.imread('../../Media Files/input_images/img_3.jpg')
+col_img = img
 
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 ret, thresh = cv2.threshold(img, 127, 255, 0)
@@ -40,3 +41,18 @@ https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/
 """
 contours, hierarchy = cv2.findContours(image=thresh, mode=cv2.RETR_LIST, method=cv2.CHAIN_APPROX_NONE)
 print("\nHierarchy for RETR_LIST:\n", hierarchy)
+img_copy = cv2.drawContours(col_img.copy(), contours, -1, (255, 200, 200), 2)
+cv2.imshow("RETR_LIST", img_copy)
+cv2.waitKey(0)
+
+# RETR_EXTERNAL
+"""
+ it returns only extreme outer flags. All child contours are left behind. 
+ We can say, under this law, Only the eldest in every family is taken care of. 
+ It doesn’t care about other members of the family
+"""
+contours, hierarchy = cv2.findContours(image=thresh, mode=cv2.RETR_EXTERNAL, method=cv2.CHAIN_APPROX_NONE)
+print("\nHierarchy for RETR_EXTERNAL:\n", hierarchy)
+img_copy = cv2.drawContours(col_img.copy(), contours, -1, (255, 200, 200), 2)
+cv2.imshow("RETR_EXTERNAL", img_copy)
+cv2.waitKey(0)
