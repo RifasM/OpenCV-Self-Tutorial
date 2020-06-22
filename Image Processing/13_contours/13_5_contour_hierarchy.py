@@ -71,4 +71,14 @@ img_copy = cv2.drawContours(col_img.copy(), contours, -1, (255, 200, 200), 2)
 cv2.imshow("RETR_CCOMP", img_copy)
 cv2.waitKey(0)
 
-
+# RETR_TREE
+"""
+It retrieves all the contours and creates a full family hierarchy list. 
+It even tells, who is the grandpa, father, son, grandson and even beyond...
+"""
+contours, hierarchy = cv2.findContours(image=thresh, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_NONE)
+print("\nHierarchy for RETR_TREE:\n", hierarchy)
+img_copy = cv2.drawContours(col_img.copy(), contours, -1, (255, 200, 200), 2)
+cv2.imshow("RETR_TREE", img_copy)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
