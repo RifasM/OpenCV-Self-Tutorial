@@ -56,3 +56,19 @@ print("\nHierarchy for RETR_EXTERNAL:\n", hierarchy)
 img_copy = cv2.drawContours(col_img.copy(), contours, -1, (255, 200, 200), 2)
 cv2.imshow("RETR_EXTERNAL", img_copy)
 cv2.waitKey(0)
+
+# RETR_CCOMP
+"""
+This flag retrieves all the contours and arranges them to a 2-level hierarchy. 
+ie external contours of the object (ie its boundary) are placed in hierarchy-1. 
+And the contours of holes inside object (if any) is placed in hierarchy-2. 
+If any object inside it, its contour is placed again in hierarchy-1 only. 
+And its hole in hierarchy-2 and so on.
+"""
+contours, hierarchy = cv2.findContours(image=thresh, mode=cv2.RETR_CCOMP, method=cv2.CHAIN_APPROX_NONE)
+print("\nHierarchy for RETR_CCOMP:\n", hierarchy)
+img_copy = cv2.drawContours(col_img.copy(), contours, -1, (255, 200, 200), 2)
+cv2.imshow("RETR_CCOMP", img_copy)
+cv2.waitKey(0)
+
+
