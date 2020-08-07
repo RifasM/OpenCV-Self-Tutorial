@@ -65,5 +65,19 @@ Histogram Calculation in Numpy
 #  returns contiguous flattened array(1D array with all the input-array
 #  elements and with the same type as it). A copy is made only if needed.
 hist, bins = np.histogram(a=img.ravel(), bins=256, range=[0, 256])
-print(bins)
-plt.plot(hist, color="black"), plt.title("Numpy Histogram"), plt.show()
+print("Normal Histogram Bin:", bins)
+plt.subplot(1, 2, 1), plt.plot(hist, color="black"), plt.title("Numpy Histogram Normal")
+
+"""
+Numpy has another function, np.bincount() 
+which is much faster than (around 10X) np.histogram(). 
+So for one-dimensional histograms, you can better try that. 
+Don’t forget to set minlength = 256 in np.bincount.
+"""
+hist = np.bincount(img.ravel(), minlength=256)
+plt.subplot(1, 2, 2), plt.plot(hist, color="black"), plt.title("Numpy Histogram Bin-count"), plt.show()
+
+"""
+OpenCV function is more faster than (around 40X) than np.histogram(). 
+So stick with OpenCV function.
+"""
