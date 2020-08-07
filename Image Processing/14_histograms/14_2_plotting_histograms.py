@@ -41,8 +41,10 @@ masked_img = cv2.bitwise_and(src1=grey_img, src2=grey_img, mask=mask)
 
 # Calculate histogram with mask and without mask
 # Check third argument for mask
-hist_full = cv2.calcHist([grey_img], [0], None, [256], [0, 256])
-hist_mask = cv2.calcHist([grey_img], [0], mask, [256], [0, 256])
+hist_full = cv2.calcHist([grey_img], channels=[0], mask=None,
+                         histSize=[256], ranges=[0, 256])
+hist_mask = cv2.calcHist([grey_img], channels=[0], mask=mask,
+                         histSize=[256], ranges=[0, 256])
 
 plt.subplot(221), plt.title("Original"), plt.imshow(grey_img, 'gray')
 plt.subplot(222), plt.title("Mask"), plt.imshow(mask, 'gray')
