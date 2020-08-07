@@ -53,3 +53,17 @@ grey_image = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 grey_hist = cv2.calcHist(images=[grey_image], channels=[0], mask=None, histSize=[256],
                          ranges=[0, 256])
 plt.plot(grey_hist, color="black"), plt.title("Greyscale Image"), plt.show()
+
+"""
+Histogram Calculation in Numpy
+    hist is same as we calculated before. But bins will have 257 elements, 
+    because Numpy calculates bins as 0-0.99, 1-1.99, 2-2.99 etc. 
+    So final range would be 255-255.99. To represent that, they also add 
+    256 at end of bins. But we don’t need that 256. Upto 255 is sufficient.
+"""
+#  img.ravel()
+#  returns contiguous flattened array(1D array with all the input-array
+#  elements and with the same type as it). A copy is made only if needed.
+hist, bins = np.histogram(a=img.ravel(), bins=256, range=[0, 256])
+print(bins)
+plt.plot(hist, color="black"), plt.title("Numpy Histogram"), plt.show()
