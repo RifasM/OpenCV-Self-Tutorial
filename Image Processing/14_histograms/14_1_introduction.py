@@ -52,3 +52,4 @@ plt.show()
 grey_image = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 grey_hist = cv2.calcHist(images=[grey_image], channels=[0], mask=None, histSize=[256],
                          ranges=[0, 256])
+plt.plot(grey_hist, color="black"), plt.title("Greyscale Image"), plt.show()
