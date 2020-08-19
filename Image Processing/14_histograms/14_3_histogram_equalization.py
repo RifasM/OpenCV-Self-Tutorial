@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread("../../Media Files/input_images/img_6.jpg")
+img = cv2.imread("../../Media Files/input_images/img_5.jpg", 0)
 
 hist, bins = np.histogram(img.flatten(), 256, [0, 256])
 
@@ -45,3 +45,18 @@ plt.hist(img2.flatten(), 256, [0, 256], color='r')
 plt.xlim([0, 256])
 plt.legend(('cdf', 'histogram'), loc='upper left')
 plt.show()
+
+# Histograms Equalization in OpenCV
+"""
+Histogram equalization is good when histogram of the image 
+is confined to a particular region. It won’t work good in 
+places where there is large intensity variations where 
+histogram covers a large region, ie both bright and 
+dark pixels are present.
+"""
+
+equ = cv2.equalizeHist(img)
+res = np.hstack((img, equ))  # stacking images side-by-side
+cv2.imshow('Result', res)
+
+cv2.waitKey(0)
