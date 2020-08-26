@@ -11,8 +11,9 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread("../../Media Files/input_images/img_1.jpg")
-cv2.imshow("File", img)
+img = cv2.imread("../../Media Files/input_images/img_20.jpg")
+img = cv2.resize(img, (150, 150))
+cv2.imshow("Input RGB", img)
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 cv2.imshow("HSV", hsv)
 
