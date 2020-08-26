@@ -12,4 +12,9 @@ import cv2
 img = cv2.imread("../../Media Files/input_images/img_6.jpg")
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-hist = cv2.calcHist([hsv], None, [100, 256], [0, 100, 0, 256])
+hist = cv2.calcHist(images=[hsv],
+                    channels=[0, 1],
+                    mask=None,
+                    histSize=[100, 256],
+                    ranges=[0, 100, 0, 256])
+print("Histogram Using CV2 Calc Hist:\n", hist)
