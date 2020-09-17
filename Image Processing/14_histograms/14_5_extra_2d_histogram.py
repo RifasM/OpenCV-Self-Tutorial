@@ -23,10 +23,10 @@ hist_scale = 10
 
 cv2.createTrackbar('scale', 'hist', hist_scale, 32, set_scale)
 
-cam = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0)
 
 while True:
-    _flag, frame = cam.read()
+    _flag, frame = cap.read()
     cv2.imshow('camera', frame)
 
     small = cv2.pyrDown(frame)
@@ -44,5 +44,5 @@ while True:
     if ch == 27:
         break
 
-cam.release()
+cap.release()
 cv2.destroyAllWindows()
