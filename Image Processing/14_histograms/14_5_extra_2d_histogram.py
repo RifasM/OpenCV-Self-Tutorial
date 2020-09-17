@@ -38,7 +38,7 @@ while True:
 
     h = np.clip(h * 0.005 * hist_scale, 0, 1)
     vis = hsv_map * h[:, :, np.newaxis] / 255.0
-    cv2.imshow('hist', vis)
+    cv2.imshow('Histogram', vis)
 
     ch = cv2.waitKey(1)
     if ch == 27:
