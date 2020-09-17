@@ -27,7 +27,7 @@ cap = cv2.VideoCapture(0)
 
 while True:
     _flag, frame = cap.read()
-    cv2.imshow('camera', frame)
+    cv2.imshow('Input', frame)
 
     small = cv2.pyrDown(frame)
 
