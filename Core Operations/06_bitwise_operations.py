@@ -13,7 +13,6 @@ roi = img1[0:rows, 0:cols]
 img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 ret, mask = cv2.threshold(src=img2gray, thresh=10, maxval=255, type=cv2.THRESH_BINARY)
 mask_inv = cv2.bitwise_not(mask)
-
 # Now black-out the area of logo in ROI
 img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)
 
