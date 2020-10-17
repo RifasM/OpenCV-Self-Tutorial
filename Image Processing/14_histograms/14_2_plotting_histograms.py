@@ -16,7 +16,6 @@ plt.title("Matplotlib Histogram")
 plt.show()
 
 # OR
-
 color = ('b', 'g', 'r')
 for i, col in enumerate(color):
     histr = cv2.calcHist([img], [i], None, [256], [0, 256])
