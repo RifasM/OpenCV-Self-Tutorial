@@ -34,6 +34,7 @@ import matplotlib.pyplot as plt
             square brackets. For full scale, we pass [256].
     ranges : this is our RANGE. Normally, it is [0,256].
 """
+
 img = cv2.imread('../../Media Files/input_images/img_5.jpg')
 blue_hist = cv2.calcHist(images=[img], channels=[0], mask=None, histSize=[256],
                          ranges=[0, 256])
