@@ -4,7 +4,6 @@ import numpy as np
 
 # built-in modules
 
-
 def set_scale(val):
     global hist_scale
     hist_scale = val
