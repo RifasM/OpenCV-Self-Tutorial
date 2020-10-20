@@ -26,7 +26,7 @@ cv2.createTrackbar('scale', 'hist', hist_scale, 32, set_scale)
 cap = cv2.VideoCapture(0)
 
 while True:
-    _flag, frame = cap.read()
+    _, frame = cap.read()
     cv2.imshow('Input', frame)
 
     small = cv2.pyrDown(frame)
